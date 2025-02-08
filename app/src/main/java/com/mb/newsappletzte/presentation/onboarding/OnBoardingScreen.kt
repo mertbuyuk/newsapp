@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun onBoardingScreen(
+fun OnBoardingScreen(
     onEvent : (OnBoardingEvent) -> Unit
 ){
 

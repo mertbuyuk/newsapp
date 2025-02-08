@@ -82,4 +82,7 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     //dagger-hilt viewmodel
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //navigation
+    implementation ("androidx.navigation:navigation-compose:2.5.3")
 }
