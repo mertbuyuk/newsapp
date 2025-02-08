@@ -31,13 +31,15 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun onBoardingScreen(){
+fun onBoardingScreen(
+    onEvent : (OnBoardingEvent) -> Unit
+){
 
     Column(modifier = Modifier.fillMaxSize()) {
         //stateler eklendi
 
         //derived state ile hesaplanip tekrar atanacak degerleri yönetebilirsin
-        val pagerState = rememberPagerState(initialPage = 0)
+        val pagerState = rememberPagerState(initialPage = 0, pageCount = { pages.size })
 
         val buttonState = remember {
             derivedStateOf {
@@ -50,7 +52,7 @@ fun onBoardingScreen(){
             }
         }
 
-        HorizontalPager(pageCount = pages.size, state = pagerState) { index ->
+        HorizontalPager( state = pagerState) { index ->
             OnBoardingPage(modifier = Modifier.fillMaxHeight(0.9f), page = pages[index])
         }
         //Spacer(modifier = Modifier.weight(1f))
@@ -85,8 +87,8 @@ fun onBoardingScreen(){
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3){
-                                //Navigate to the main screen and save a value in datastore preferences
+                            if (pagerState.currentPage == 2){
+                                onEvent(OnBoardingEvent.saveAppEntry)
                             }else{
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
@@ -98,13 +100,5 @@ fun onBoardingScreen(){
                 //Spacer(modifier = Modifier.weight(0.5f))
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun previewOnBoardingScreen(){
-    NewsappLetzteTheme {
-        onBoardingScreen()
     }
 }

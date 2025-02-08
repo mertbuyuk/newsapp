@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import com.mb.newsappletzte.domain.usecases.AppEntryUseCases
+import com.mb.newsappletzte.presentation.onboarding.OnBoardingViewModel
 import com.mb.newsappletzte.presentation.onboarding.onBoardingScreen
 import com.mb.newsappletzte.ui.theme.NewsappLetzteTheme
 import dagger.hilt.EntryPoint
@@ -32,7 +34,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         //splash screen eklendi
         installSplashScreen()
-
         lifecycleScope.launch {
             appEntryUseCases.readAppEntry().collect{
                 Log.i("test12",it.toString())
@@ -41,7 +42,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsappLetzteTheme(dynamicColor = false) {
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-                    onBoardingScreen()
+                    val viewModel : OnBoardingViewModel = hiltViewModel()
+                    onBoardingScreen(onEvent = {
+                        viewModel.onEvent(it)
+                    })
                 }
             }
         }
