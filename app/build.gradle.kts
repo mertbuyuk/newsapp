@@ -54,6 +54,7 @@ android {
 }
 
 dependencies {
+    val paging_version = "3.3.2"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
@@ -85,4 +86,10 @@ dependencies {
 
     //navigation
     implementation ("androidx.navigation:navigation-compose:2.5.3")
+
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+    //paging
+    implementation("androidx.paging:paging-runtime:$paging_version")
 }

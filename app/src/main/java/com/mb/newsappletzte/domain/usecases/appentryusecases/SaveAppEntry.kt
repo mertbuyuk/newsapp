@@ -1,4 +1,4 @@
-package com.mb.newsappletzte.domain.usecases
+package com.mb.newsappletzte.domain.usecases.appentryusecases
 
 import com.mb.newsappletzte.domain.manager.LocalUserManager
 

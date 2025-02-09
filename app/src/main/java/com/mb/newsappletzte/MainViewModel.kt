@@ -3,11 +3,10 @@ package com.mb.newsappletzte
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mb.newsappletzte.domain.usecases.AppEntryUseCases
+import com.mb.newsappletzte.domain.usecases.appentryusecases.AppEntryUseCases
 import com.mb.newsappletzte.presentation.navgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
