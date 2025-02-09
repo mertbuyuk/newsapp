@@ -44,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -54,6 +54,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.paging:paging-compose-android:3.3.5")
     val paging_version = "3.3.2"
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -94,4 +95,8 @@ dependencies {
 
     //paging
     implementation("androidx.paging:paging-runtime:$paging_version")
+
+    //coil
+    implementation("io.coil-kt.coil3:coil-compose:3.0.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0")
 }
