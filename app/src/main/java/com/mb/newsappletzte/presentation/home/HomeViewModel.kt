@@ -14,7 +14,7 @@ class HomeViewModel @Inject constructor(val newsUseCase : GetNewsUseCase) : View
     var state = mutableStateOf(HomeState())
         private set
 
-    val news = newsUseCase.invoke(
+     val news = newsUseCase.invoke(
         sources = listOf("bbc-news","abc-news","al-jazeera-english")
     ).cachedIn(viewModelScope)
     //paging 3 özelligi -> önbellege alir yukarda ki kodla
