@@ -10,6 +10,7 @@ import com.mb.newsappletzte.domain.repository.NewsRepository
 import com.mb.newsappletzte.domain.usecases.appentryusecases.AppEntryUseCases
 import com.mb.newsappletzte.domain.usecases.appentryusecases.ReadAppEntry
 import com.mb.newsappletzte.domain.usecases.appentryusecases.SaveAppEntry
+import com.mb.newsappletzte.domain.usecases.news.GetNewsUseCase
 import com.mb.newsappletzte.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -54,5 +55,11 @@ object AppModule {
         return AppEntryUseCases(
             readAppEntry = ReadAppEntry(localUserManager),saveAppEntry = SaveAppEntry(localUserManager)
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetNewsUseCase( newsRepository: NewsRepository) : GetNewsUseCase {
+        return GetNewsUseCase(newsRepository = newsRepository)
     }
 }
