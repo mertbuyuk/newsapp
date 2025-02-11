@@ -3,7 +3,6 @@ package com.mb.newsappletzte.di
 import android.app.Application
 import com.mb.newsappletzte.data.manager.LocalUserManagerImp
 import com.mb.newsappletzte.data.remote.GetNewsApi
-import com.mb.newsappletzte.data.remote.NewsPagingSource
 import com.mb.newsappletzte.data.repository.NewsRepositoryImp
 import com.mb.newsappletzte.domain.manager.LocalUserManager
 import com.mb.newsappletzte.domain.repository.NewsRepository
@@ -11,6 +10,9 @@ import com.mb.newsappletzte.domain.usecases.appentryusecases.AppEntryUseCases
 import com.mb.newsappletzte.domain.usecases.appentryusecases.ReadAppEntry
 import com.mb.newsappletzte.domain.usecases.appentryusecases.SaveAppEntry
 import com.mb.newsappletzte.domain.usecases.news.GetNewsUseCase
+import com.mb.newsappletzte.domain.usecases.news.NewsUseCases
+import com.mb.newsappletzte.domain.usecases.news.SearchNewsUseCase
+import com.mb.newsappletzte.presentation.search.SearchViewModel
 import com.mb.newsappletzte.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -61,5 +63,17 @@ object AppModule {
     @Singleton
     fun provideGetNewsUseCase( newsRepository: NewsRepository) : GetNewsUseCase {
         return GetNewsUseCase(newsRepository = newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchNewsUseCases(newsRepository: NewsRepository) : SearchNewsUseCase{
+        return SearchNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsUseCases(getNewsUseCase: GetNewsUseCase, searchNewsUseCase: SearchNewsUseCase) : NewsUseCases{
+        return NewsUseCases(getNewsUseCase,searchNewsUseCase)
     }
 }
