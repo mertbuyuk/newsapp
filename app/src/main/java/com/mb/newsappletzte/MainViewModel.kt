@@ -21,6 +21,8 @@ class MainViewModel @Inject constructor(private val appEntryUseCases: AppEntryUs
         private set
 
     init {
+        //onEach, bir Flow'un her yeni verisini dinleyip işlemek için kullanılır.
+        //(side effect) oluşturmaya uygundur (örneğin, bir değişkeni değiştirme veya bir UI güncellemesi yapma).
         appEntryUseCases.readAppEntry().onEach {startFromMainPageScreen->
             when(startFromMainPageScreen){
                 true -> startDestination.value = Route.NewsNavigation.route

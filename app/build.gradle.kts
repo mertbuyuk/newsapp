@@ -5,6 +5,8 @@ plugins {
     //dagger-hilt
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+
+    id("kotlin-parcelize")
 }
 
 android {
@@ -56,6 +58,7 @@ android {
 dependencies {
     implementation("androidx.paging:paging-compose-android:3.3.5")
     val paging_version = "3.3.2"
+    val room_version = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
@@ -99,4 +102,7 @@ dependencies {
     //coil
     implementation("io.coil-kt.coil3:coil-compose:3.0.0")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0")
+
+    //room
+    implementation("androidx.room:room-runtime:$room_version")
 }

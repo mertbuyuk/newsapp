@@ -16,7 +16,6 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -92,10 +91,9 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit){
 
         ArticlesList(
             modifier = Modifier.padding(horizontal = MediumPadding1),
-            articles = articles,
-            onClick = {
-                //TODO: Navigate to Details Screen
-            }
-        )
+            articles = articles
+        ) {
+            //TODO: Navigate to Details Screen
+        }
     }
 }

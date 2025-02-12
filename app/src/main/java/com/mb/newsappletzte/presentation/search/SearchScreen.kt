@@ -34,11 +34,10 @@ fun SearchScreen(modifier: Modifier = Modifier,
         state.articles?.let {
             val articles = it.collectAsLazyPagingItems()
             ArticlesList(
-                articles = articles,
-                onClick = {
-                    //TODO: Navigate to details screen
-                }
-            )
+                articles = articles
+            ) {
+                //TODO: Navigate to details screen
+            }
         }
     }
 }
